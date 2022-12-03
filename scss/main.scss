@@ -26,7 +26,7 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0.6rem 1rem;
+  padding: 1rem;
   @include displayFlex(space-between, row);
   display: none;
   .logo-container {
@@ -266,7 +266,7 @@ footer {
   #layout-container {
     grid-template-columns: 100%;
     padding: 1rem;
-    margin-top: 3.5rem;
+    margin-top: 4.5rem;
   }
   nav {
     display: flex;
@@ -359,15 +359,9 @@ footer {
 // mobile view
 @media (max-width: 600px) {
   .form-container {
-    @include displayFlex(flex-start, row);
-    align-items: flex-start;
-    margin-top: 1rem;
-    background-color: var(--transparentWhite);
-    height: fit-content;
     width: 100%;
-    padding: 0.8rem;
-    border-radius: 5px;
     .search-input {
+      width: 100%;
       outline: none;
       font-size: 1rem;
       margin-right: 1rem;
