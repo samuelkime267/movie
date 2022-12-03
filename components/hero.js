@@ -12,6 +12,8 @@ const Hero = ({ data }) => {
         alt={data.original_name ?? data.original_title}
         fill
         className="hero-image"
+        sizes="100vw"
+        priority
       />
       <div className="text-container">
         <h1 className="movie-title">

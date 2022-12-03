@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 
 const ActorsCard = ({ data }) => {
-  console.log(data);
   return (
     <div className="actor-card-container">
       <div className="image-container">
@@ -11,6 +10,8 @@ const ActorsCard = ({ data }) => {
           alt={data.name ?? data.original_name}
           fill
           className="actor-pic"
+          sizes="(max-width: 1024px) 50vw,
+              33vw"
         />
       </div>
       <p className="actor-name">{data.name ?? data.original_name}</p>

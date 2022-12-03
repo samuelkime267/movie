@@ -1,17 +1,19 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
-const Error = ({ link }) => {
+import { useRouter } from 'next/router';
+const Error = () => {
+  const router = useRouter();
+  const pageRefresh = function () {
+    router.reload(window.location.pathname);
+  };
   return (
     <div className="error-container">
       <FontAwesomeIcon icon={faCircleExclamation} className="error-icon" />
       <p>something went wrong</p>
-      <Link href={`${link}`}>
-        <button className="bgLess playButton">
-          <p className="play-text">Try again</p>
-        </button>
-      </Link>
+      <button className="bgLess playButton" onClick={pageRefresh}>
+        <p className="play-text">Try again</p>
+      </button>
     </div>
   );
 };

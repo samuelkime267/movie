@@ -6,16 +6,34 @@ import {
   faUser,
   faBookmark,
   faFilm,
+  faClapperboard,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const Navbar = () => {
+  const [isNav, setIsNav] = useState(false);
   const route = useRouter();
   const path = route.pathname.split('/').at(1);
   return (
     <>
-      <aside>
+      <nav>
+        <div className="logo-container">
+          <Image src="/logo.png" fill alt="logo" sizes="5rem" />
+        </div>
+        <button
+          className="menu-button bgLess"
+          onClick={() => setIsNav(nav => !nav)}
+        >
+          <FontAwesomeIcon icon={faBars} className="menu-icon" />
+        </button>
+      </nav>
+      <aside
+        className={`${isNav ? 'active-nav' : ''}`}
+        onClick={() => setIsNav(nav => !nav)}
+      >
         <div className="logo-container">
           <Image src="/logo.png" fill alt="logo" sizes="5rem" />
         </div>
@@ -28,11 +46,19 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div className={`nav-link ${path === 'actors' ? 'active-link' : ''}`}>
-            <Link href="/actors">
+          <div className={`nav-link ${path === 'movie' ? 'active-link' : ''}`}>
+            <Link href="/movie">
               <div className="nav-link-container">
-                <FontAwesomeIcon icon={faUser} className="nav-icon" />
-                <p className="nav-link-text">Actors</p>
+                <FontAwesomeIcon icon={faClapperboard} className="nav-icon" />
+                <p className="nav-link-text">Movies</p>
+              </div>
+            </Link>
+          </div>
+          <div className={`nav-link ${path === 'tv' ? 'active-link' : ''}`}>
+            <Link href="/tv">
+              <div className="nav-link-container">
+                <FontAwesomeIcon icon={faFilm} className="nav-icon" />
+                <p className="nav-link-text">Tv Shows</p>
               </div>
             </Link>
           </div>
@@ -46,11 +72,11 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div className={`nav-link ${path === 'movie' ? 'active-link' : ''}`}>
-            <Link href="/movie">
+          <div className={`nav-link ${path === 'actors' ? 'active-link' : ''}`}>
+            <Link href="/actors">
               <div className="nav-link-container">
-                <FontAwesomeIcon icon={faFilm} className="nav-icon" />
-                <p className="nav-link-text">Genres</p>
+                <FontAwesomeIcon icon={faUser} className="nav-icon" />
+                <p className="nav-link-text">Actors</p>
               </div>
             </Link>
           </div>

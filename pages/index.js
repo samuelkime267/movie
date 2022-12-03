@@ -1,68 +1,82 @@
-import { Search, Hero, MovieContainer, Error, ActorsCard } from '../components';
+import {
+  Search,
+  Hero,
+  MovieContainer,
+  Error,
+  ActorsCard,
+  Footer,
+} from '../components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
+import Head from 'next/head';
 
 export default function Home({ movies, error, shows, all, people }) {
   if (error) {
-    return <Error link="/" />;
+    return <Error />;
   }
   const allResults = all.results;
   const moviesResults = movies.results;
   const showsResults = shows.results;
   const peopleResults = people.results;
-  console.log(people);
   return (
-    <main className="content-body">
-      <Search />
-      <section className="hero-section">
-        <Swiper
-          // install Swiper modules
-          modules={[Pagination, Autoplay]}
-          spaceBetween={0}
-          slidesPerView={1}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 3500 }}
-          loop
-        >
-          {allResults.map((data, i) => {
-            if (i > 9) return;
-            return (
-              <SwiperSlide key={data.id}>
-                <Hero data={data} />
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
-      </section>
-      <section className="movie-listing">
-        <h1 className="section-title">Trending Movies</h1>
-        <div className="movies-list-carousel">
-          {moviesResults.map(data => {
-            return <MovieContainer key={data.id} link={``} data={data} />;
-          })}
-        </div>
-      </section>
-      <section className="movie-listing">
-        <h1 className="section-title">Trending TV Shows</h1>
-        <div className="movies-list-carousel">
-          {showsResults.map(data => {
-            return <MovieContainer key={data.id} link={``} data={data} />;
-          })}
-        </div>
-      </section>
-      <section className="trending-actors">
-        <h1 className="section-title">Trending Persons</h1>
-        <div className="artist-containers-holder">
-          {peopleResults.map(data => (
-            <ActorsCard key={data.id} data={data} />
-          ))}
-        </div>
-      </section>
-    </main>
+    <>
+      <Head>
+        <title>Movie Website</title>
+        <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
+      </Head>
+      <main className="content-body">
+        <Search />
+        <section className="hero-section">
+          <Swiper
+            // install Swiper modules
+            modules={[Pagination, Autoplay]}
+            spaceBetween={0}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3500 }}
+            loop
+          >
+            {allResults.map((data, i) => {
+              if (i > 9) return;
+              return (
+                <SwiperSlide key={data.id}>
+                  <Hero data={data} />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </section>
+        <section className="movie-listing">
+          <h1 className="section-title">Trending Movies</h1>
+          <div className="movies-list-carousel">
+            {moviesResults.map(data => {
+              return <MovieContainer key={data.id} link={``} data={data} />;
+            })}
+          </div>
+        </section>
+        <section className="movie-listing">
+          <h1 className="section-title">Trending TV Shows</h1>
+          <div className="movies-list-carousel">
+            {showsResults.map(data => {
+              return <MovieContainer key={data.id} link={``} data={data} />;
+            })}
+          </div>
+        </section>
+        <section className="trending-actors">
+          <h1 className="section-title">Trending Persons</h1>
+          <div className="artist-containers-holder">
+            {peopleResults.map(data => (
+              <ActorsCard key={data.id} data={data} />
+            ))}
+          </div>
+        </section>
+        {/* <Footer /> */}
+      </main>
+    </>
   );
 }
 export async function getServerSideProps() {

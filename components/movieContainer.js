@@ -15,6 +15,9 @@ const MovieContainer = ({ link, data }) => {
             alt={data.original_name ?? data.original_title}
             fill
             className="poster-image"
+            sizes="(max-width: 768px) 100vw,
+              (max-width: 1024px) 50vw,
+              33vw"
           />
         </div>
         <div className="movie-detail-holder">
@@ -27,12 +30,7 @@ const MovieContainer = ({ link, data }) => {
             </button>
             <div className="rating">
               <p className="rating-text">{data.vote_average.toFixed(1)}</p>
-              <FontAwesomeIcon
-                icon={faStar}
-                style={{ color: ' rgb(0, 195, 255)' }}
-                color=" rgb(0, 195, 255)"
-                className="star"
-              />
+              <FontAwesomeIcon icon={faStar} className="star" />
             </div>
           </div>
         </div>
