@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { MovieContainer, Error } from '../../components';
-const Tv = ({ genre, discover, error }) => {
-  const [activeGenre, setActiveGenre] = useState('All');
+const TvGenre = ({ genre, discover, contextParams, error }) => {
   const router = useRouter();
+  const [activeGenre, setActiveGenre] = useState(contextParams.genre);
   if (error) {
     return <Error />;
   }
@@ -11,12 +11,11 @@ const Tv = ({ genre, discover, error }) => {
     if (genre === activeGenre) return;
     router.push(`/tv/${genre.toLowerCase()}`);
   };
-
   return (
     <>
       <main className="content-body">
         <div className="section-genres-header">
-          <h1 className="section-title">All Genres</h1>
+          <h1 className="section-title">{activeGenre}</h1>
           <form>
             <select
               value={activeGenre}
@@ -44,32 +43,35 @@ const Tv = ({ genre, discover, error }) => {
   );
 };
 
-export default Tv;
+export default TvGenre;
 export async function getServerSideProps(context) {
-  console.log(context);
+  const contextParams = context.params;
   try {
-    // genre
+    // genres
     const reqGenre = await fetch(
       `${process.env.API_URL}/genre/tv/list?api_key=${process.env.API_KEY}&language=en-US`
     );
     const genre = await reqGenre.json();
 
-    // discover
+    // movies in selected genre
     const reqDiscover = await fetch(
       `${process.env.API_URL}/discover/tv?api_key=${
         process.env.API_KEY
-      }&language=en-US&page=${1}`
+      }&language=en-US&page=${1}&with_genres=${
+        genre.genres.find(
+          genre => contextParams.genre === genre.name.toLowerCase()
+        ).id
+      }`
     );
     const discover = await reqDiscover.json();
 
     return {
-      props: { error: false, genre, discover },
+      props: { error: false, genre, discover, contextParams },
     };
   } catch (error) {
     return {
       props: {
         error: true,
-        data: '',
       },
     };
   }

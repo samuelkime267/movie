@@ -42,6 +42,7 @@ nav {
   .menu-button {
     .menu-icon {
       width: 1.8rem;
+      font-size: 1.8rem;
       color: var(--primaryBlue);
     }
   }
@@ -85,6 +86,7 @@ aside {
           @include displayFlex(center, row);
           .nav-icon {
             width: 1.5rem;
+            font-size: 1.5rem;
             margin-right: 1rem;
           }
           .nav-link-text {
@@ -108,10 +110,12 @@ aside {
     outline: none;
     font-size: 1rem;
     margin-right: 1rem;
+    color: white;
   }
   .search-icon-btn {
     .search-icon {
       width: 1.2rem;
+      font-size: 1.2rem;
       color: rgba(255, 255, 255, 0.6);
     }
   }
@@ -188,18 +192,20 @@ aside {
         .bgLess {
           .heart {
             width: 1.2rem;
+            font-size: 1.2rem;
             color: white;
           }
         }
         .rating {
           @include displayFlex(center, row);
           .rating-text {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-right: 0.5rem;
           }
           .star {
             color: white;
             width: 1.2rem;
+            font-size: 1.2rem;
           }
         }
       }
@@ -210,6 +216,7 @@ aside {
   @include displayFlex(center, column);
   .error-icon {
     font-size: 6rem;
+    width: 6rem;
     margin-bottom: 2rem;
   }
   p {
@@ -258,6 +265,37 @@ footer {
     a {
       color: var(--primaryBlue);
     }
+  }
+}
+.section-genres-header {
+  @include displayFlex(space-between, row);
+  height: fit-content;
+  .section-title {
+    margin-bottom: 0;
+  }
+  form {
+    select {
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      background-color: var(--transparentWhite);
+      color: white;
+      padding: 10px;
+      option {
+        color: black;
+        padding: 5px;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+.category-movie-container {
+  @include displayFlex(center, row);
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  .movie-link-container {
+    width: 15rem;
   }
 }
 
@@ -315,6 +353,7 @@ footer {
             @include displayFlex(center, row);
             .nav-icon {
               width: 1.5rem;
+              font-size: 1.5rem;
               margin-right: 1rem;
             }
             .nav-link-text {
@@ -354,6 +393,14 @@ footer {
       }
     }
   }
+
+  // movie page
+  .category-movie-container {
+    gap: 1rem;
+    .movie-link-container {
+      width: 13rem;
+    }
+  }
 }
 
 // mobile view
@@ -369,6 +416,7 @@ footer {
     .search-icon-btn {
       .search-icon {
         width: 1.2rem;
+        font-size: 1.2rem;
       }
     }
   }
@@ -418,7 +466,7 @@ footer {
           .rating {
             @include displayFlex(center, row);
             .rating-text {
-              font-size: 0.9rem;
+              font-size: 1.15rem;
             }
           }
         }
@@ -427,5 +475,23 @@ footer {
   }
   .artist-containers-holder {
     gap: 1rem;
+  }
+
+  // movie page
+  .section-genres-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .category-movie-container {
+    gap: 2rem;
+    .movie-link-container {
+      width: 17rem;
+      .movie-container {
+        .image-holder {
+          width: 100%;
+          height: 24rem;
+        }
+      }
+    }
   }
 }

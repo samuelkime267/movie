@@ -7,7 +7,11 @@ const Footer = () => {
       <p className="name">Created by Samuel Kime</p>
       <p className="copyright">&copy; {year}</p>
       <p className="api">
-        Used <a href="https://www.themoviedb.org/">The Movie Database</a> API.
+        Used{' '}
+        <a target={'_blank'} href="https://www.themoviedb.org/">
+          The Movie Database
+        </a>{' '}
+        API.
       </p>
     </footer>
   );
