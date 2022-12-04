@@ -253,10 +253,22 @@ aside {
   }
 }
 .actor-card-container {
+  &:hover {
+    .image-container {
+      .actor-pic {
+        transform: scale(1.05);
+      }
+    }
+    .actor-name {
+      color: var(--primaryBlue);
+    }
+  }
   .image-container {
     position: relative;
     width: 10rem;
     height: 15rem;
+    border-radius: 10px;
+    overflow: hidden;
     .actor-pic {
       border-radius: 10px;
       width: 10rem;
