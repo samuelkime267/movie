@@ -168,11 +168,27 @@ aside {
   }
 }
 .movie-link-container {
+  &:hover {
+    .movie-container {
+      .image-holder {
+        .poster-image {
+          transform: scale(1.05);
+        }
+      }
+      .movie-detail-holder {
+        .movie-title {
+          color: var(--primaryBlue);
+        }
+      }
+    }
+  }
   .movie-container {
     .image-holder {
       position: relative;
       width: 15rem;
       height: 24rem;
+      overflow: hidden;
+      border-radius: 10px;
       .poster-image {
         border-radius: 10px;
         width: 15rem;
