@@ -8,7 +8,11 @@ const Footer = () => {
       <p className="copyright">&copy; {year}</p>
       <p className="api">
         Used{' '}
-        <a target={'_blank'} href="https://www.themoviedb.org/">
+        <a
+          target={'_blank'}
+          href="https://www.themoviedb.org/"
+          rel="noreferrer"
+        >
           The Movie Database
         </a>{' '}
         API.
