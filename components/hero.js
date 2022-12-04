@@ -5,6 +5,7 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/dist/client/image';
 
 const Hero = ({ data }) => {
+  console.log(data);
   return (
     <div className="hero-container">
       <Image
@@ -25,7 +26,7 @@ const Hero = ({ data }) => {
             : data.overview}
         </p>
         <p className="release-date">Type: {data.media_type.toUpperCase()}</p>
-        <Link href={`/movie/${data.id}`} className="link-btn">
+        <Link href={`/movie`} className="link-btn">
           <button className="bgLess playButton">
             <p className="play-text">Play</p>
             <FontAwesomeIcon icon={faPlay} className="play-btn" />
