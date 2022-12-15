@@ -16,7 +16,7 @@ import { useState } from 'react';
 const Navbar = () => {
   const [isNav, setIsNav] = useState(false);
   const route = useRouter();
-  const path = route.pathname.split('/').at(1);
+  const path = route.asPath.split('/')[1];
   return (
     <>
       <nav>
@@ -47,7 +47,7 @@ const Navbar = () => {
             </Link>
           </div>
           <div className={`nav-link ${path === 'movie' ? 'active-link' : ''}`}>
-            <Link href="/movie">
+            <Link href="/movie/all">
               <div className="nav-link-container">
                 <FontAwesomeIcon icon={faClapperboard} className="nav-icon" />
                 <p className="nav-link-text">Movies</p>
@@ -55,7 +55,7 @@ const Navbar = () => {
             </Link>
           </div>
           <div className={`nav-link ${path === 'tv' ? 'active-link' : ''}`}>
-            <Link href="/tv">
+            <Link href="/tv/all">
               <div className="nav-link-container">
                 <FontAwesomeIcon icon={faFilm} className="nav-icon" />
                 <p className="nav-link-text">Tv Shows</p>

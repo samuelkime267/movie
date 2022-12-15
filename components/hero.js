@@ -5,7 +5,6 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/dist/client/image';
 
 const Hero = ({ data }) => {
-  console.log(data);
   return (
     <div className="hero-container">
       <Image

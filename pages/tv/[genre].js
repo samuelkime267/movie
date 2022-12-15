@@ -15,7 +15,9 @@ const TvGenre = ({ genre, discover, contextParams, error }) => {
     <>
       <main className="content-body">
         <div className="section-genres-header">
-          <h1 className="section-title">{activeGenre}</h1>
+          <h1 className="section-title">
+            {activeGenre.toLowerCase() === 'all' ? 'all genres' : activeGenre}
+          </h1>
           <form>
             <select
               value={activeGenre}
@@ -60,7 +62,7 @@ export async function getServerSideProps(context) {
       }&language=en-US&page=${1}&with_genres=${
         genre.genres.find(
           genre => contextParams.genre === genre.name.toLowerCase()
-        ).id
+        )?.id
       }`
     );
     const discover = await reqDiscover.json();
