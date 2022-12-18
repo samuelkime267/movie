@@ -1,6 +1,6 @@
 import { Search, Hero, MovieContainer, Error, ActorsCard } from '../components';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay, Navigation } from 'swiper';
+import { Pagination, Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
@@ -41,7 +41,7 @@ export default function Home({
           <Swiper
             // install Swiper modules
             modules={[Pagination, Autoplay]}
-            spaceBetween={0}
+            spaceBetween={16}
             slidesPerView={1}
             pagination={{ clickable: true }}
             autoplay={{ delay: 3500 }}
@@ -120,19 +120,19 @@ export async function getServerSideProps() {
       `${process.env.API_URL}/trending/all/day?api_key=${process.env.API_KEY}`
     );
     const all = await reqAll.json();
+    /*
+    // popular movies
+    const reqPopularMovies = await fetch(
+      `${process.env.API_URL}/movie/popular?api_key=${process.env.API_KEY}`
+    );
+    const popularMovies = await reqPopularMovies.json();
 
-    // // popular movies
-    // const reqPopularMovies = await fetch(
-    //   `${process.env.API_URL}/movie/popular?api_key=${process.env.API_KEY}`
-    // );
-    // const popularMovies = await reqPopularMovies.json();
-
-    // // popular tv shows
-    // const reqPopularTv = await fetch(
-    //   `${process.env.API_URL}/tv/popular?api_key=${process.env.API_KEY}`
-    // );
-    // const popularTv = await reqPopularTv.json();
-
+    // popular tv shows
+    const reqPopularTv = await fetch(
+      `${process.env.API_URL}/tv/popular?api_key=${process.env.API_KEY}`
+    );
+    const popularTv = await reqPopularTv.json();
+*/
     // top movies
     const reqTopRatedMovie = await fetch(
       `${process.env.API_URL}/movie/top_rated?api_key=${process.env.API_KEY}`

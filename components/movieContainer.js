@@ -7,7 +7,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const MovieContainer = ({ link, data }) => {
   return (
-    <Link href={`/${link}`} className="movie-link-container">
+    <Link href={`/`} className="movie-link-container">
       <div className="movie-container">
         <div className="image-holder">
           <Image

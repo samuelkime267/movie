@@ -5,4 +5,14 @@ import MovieContainer from './movieContainer.js';
 import Error from './error.js';
 import ActorsCard from './actorsCard.js';
 import Footer from './footer.js';
-export { Navbar, Search, Hero, MovieContainer, Error, ActorsCard, Footer };
+import Pagination from './pagination.js';
+export {
+  Navbar,
+  Search,
+  Hero,
+  MovieContainer,
+  Error,
+  ActorsCard,
+  Footer,
+  Pagination,
+};

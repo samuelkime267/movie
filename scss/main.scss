@@ -327,6 +327,26 @@ footer {
     width: 15rem;
   }
 }
+.pagination-container {
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 5rem 0;
+  @include displayFlex(center, row);
+}
+.pagination-btn {
+  margin: 10px 5px;
+  color: white;
+  background-color: var(--transparentWhite);
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  &:hover,
+  &.active-page {
+    background-color: var(--primaryBlue);
+  }
+}
 
 // tablet view
 @media (max-width: 1023px) {
@@ -522,5 +542,13 @@ footer {
         }
       }
     }
+  }
+}
+@media (min-width: calc(1500px)) {
+  #layout-container {
+    grid-template-columns: 11rem calc(100%);
+  }
+  aside {
+    position: fixed;
   }
 }

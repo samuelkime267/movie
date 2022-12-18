@@ -1,15 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { MovieContainer, Error } from '../../components';
-const MovieGenre = ({ genre, discover, contextParams, error }) => {
+import { MovieContainer, Error, Pagination } from '../../components';
+
+const TvGenre = ({ genre, discover, params: contextParams, error }) => {
   const router = useRouter();
-  const [activeGenre, setActiveGenre] = useState(contextParams.genre);
+  const [activeGenre, setActiveGenre] = useState(contextParams?.at(1));
   if (error) {
     return <Error />;
   }
+
   const changeGenre = function (genre) {
     if (genre === activeGenre) return;
-    router.push(`/movie/${genre.toLowerCase()}`);
+    const urlPaths = router.asPath.split('/');
+    const mediaType = urlPaths[2];
+    router.push(`${mediaType}/${genre.toLowerCase()}/1`);
   };
   return (
     <>
@@ -40,35 +44,44 @@ const MovieGenre = ({ genre, discover, contextParams, error }) => {
             <MovieContainer key={movie.id} data={movie} link={`movie`} />
           ))}
         </section>
+        <section className="pagination-container">
+          <Pagination
+            curPage={discover.page}
+            totalPages={discover.total_pages}
+          />
+        </section>
       </main>
     </>
   );
 };
 
-export default MovieGenre;
+export default TvGenre;
 export async function getServerSideProps(context) {
-  const contextParams = context.params;
+  const params = context.params.medias;
+  const mediaType = params[0]; //movie
+  const genreType = params[1]; //all
+  const pageNo = params[2]; //1
+  console.log(mediaType, genreType, pageNo);
+
   try {
     // genres
     const reqGenre = await fetch(
-      `${process.env.API_URL}/genre/movie/list?api_key=${process.env.API_KEY}&language=en-US`
+      `${process.env.API_URL}/genre/${mediaType}/list?api_key=${process.env.API_KEY}&language=en-US`
     );
     const genre = await reqGenre.json();
 
     // movies in selected genre
     const reqDiscover = await fetch(
-      `${process.env.API_URL}/discover/movie?api_key=${
+      `${process.env.API_URL}/discover/${mediaType}?api_key=${
         process.env.API_KEY
-      }&language=en-US&page=${1}&with_genres=${
-        genre.genres.find(
-          genre => contextParams.genre === genre.name.toLowerCase()
-        )?.id
+      }&language=en-US&page=${pageNo}&with_genres=${
+        genre.genres.find(genre => genreType === genre.name.toLowerCase())?.id
       }`
     );
     const discover = await reqDiscover.json();
 
     return {
-      props: { error: false, genre, discover, contextParams },
+      props: { error: false, genre, discover, params },
     };
   } catch (error) {
     return {
