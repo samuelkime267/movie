@@ -546,7 +546,7 @@ footer {
 }
 @media (min-width: calc(1500px)) {
   #layout-container {
-    grid-template-columns: 11rem calc(100%);
+    grid-template-columns: 11rem calc(100% - 12rem);
   }
   aside {
     position: fixed;
