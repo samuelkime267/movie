@@ -11,6 +11,7 @@ import PlayBtn from './playBtn.js';
 import AddToFavBtn from './addToFavBtn.js';
 import CastContainer from './CastContainer.js';
 import DetailsContainer from './detailsContainer.js';
+import Loader from './loader.js';
 export {
   Navbar,
   Search,
@@ -25,4 +26,5 @@ export {
   AddToFavBtn,
   CastContainer,
   DetailsContainer,
+  Loader,
 };
