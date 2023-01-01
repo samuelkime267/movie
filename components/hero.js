@@ -1,8 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/dist/client/image';
+import { PlayBtn } from '/components';
 
 const Hero = ({ data }) => {
   return (
@@ -25,12 +23,7 @@ const Hero = ({ data }) => {
             : data.overview}
         </p>
         <p className="release-date">Type: {data.media_type.toUpperCase()}</p>
-        <Link href={`/movie`} className="link-btn">
-          <button className="bgLess playButton">
-            <p className="play-text">Play</p>
-            <FontAwesomeIcon icon={faPlay} className="play-btn" />
-          </button>
-        </Link>
+        <PlayBtn />
       </div>
     </div>
   );

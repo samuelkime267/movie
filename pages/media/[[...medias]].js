@@ -2,8 +2,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { MovieContainer, Error, Pagination } from '../../components';
 
-const TvGenre = ({ genre, discover, params: contextParams, error }) => {
+const TvGenre = ({
+  genre,
+  discover,
+  params: contextParams,
+  error,
+  mediaType,
+}) => {
   const router = useRouter();
+  console.log(mediaType);
   const [activeGenre, setActiveGenre] = useState(contextParams?.at(1));
   if (error) {
     return <Error />;
@@ -41,7 +48,11 @@ const TvGenre = ({ genre, discover, params: contextParams, error }) => {
         </div>
         <section className="category-movie-container">
           {discover.results.map(movie => (
-            <MovieContainer key={movie.id} data={movie} link={`movie`} />
+            <MovieContainer
+              key={movie.id}
+              data={movie}
+              link={`/details/${mediaType}/${movie.id}`}
+            />
           ))}
         </section>
         <section className="pagination-container">
@@ -81,7 +92,7 @@ export async function getServerSideProps(context) {
     const discover = await reqDiscover.json();
 
     return {
-      props: { error: false, genre, discover, params },
+      props: { error: false, genre, discover, params, mediaType },
     };
   } catch (error) {
     return {

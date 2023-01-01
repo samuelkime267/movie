@@ -13,8 +13,6 @@ export default function Home({
   shows,
   all,
   people,
-  // popularMovies,
-  // popularTv,
   TopRatedMovie,
   TopRatedTv,
 }) {
@@ -25,8 +23,6 @@ export default function Home({
   const moviesResults = movies.results;
   const showsResults = shows.results;
   const peopleResults = people.results;
-  // const popularMoviesData = popularMovies.results;
-  // const popularTvData = popularTv.results;
   const TopRatedMovieData = TopRatedMovie.results;
   const TopRatedTvData = TopRatedTv.results;
   return (
@@ -61,7 +57,13 @@ export default function Home({
           <h1 className="section-title">Trending Movies</h1>
           <div className="movies-list-carousel">
             {moviesResults.map(data => {
-              return <MovieContainer key={data.id} link={``} data={data} />;
+              return (
+                <MovieContainer
+                  key={data.id}
+                  link={`/details/movie/${data.id}`}
+                  data={data}
+                />
+              );
             })}
           </div>
         </section>
@@ -69,7 +71,13 @@ export default function Home({
           <h1 className="section-title">Trending TV Shows</h1>
           <div className="movies-list-carousel">
             {showsResults.map(data => {
-              return <MovieContainer key={data.id} link={``} data={data} />;
+              return (
+                <MovieContainer
+                  key={data.id}
+                  link={`/details/tv/${data.id}`}
+                  data={data}
+                />
+              );
             })}
           </div>
         </section>
@@ -77,7 +85,13 @@ export default function Home({
           <h1 className="section-title">Top Rated Movies</h1>
           <div className="movies-list-carousel">
             {TopRatedMovieData.map(data => {
-              return <MovieContainer key={data.id} link={``} data={data} />;
+              return (
+                <MovieContainer
+                  key={data.id}
+                  link={`/details/movie/${data.id}`}
+                  data={data}
+                />
+              );
             })}
           </div>
         </section>
@@ -85,7 +99,13 @@ export default function Home({
           <h1 className="section-title">Top Rated TV Shows</h1>
           <div className="movies-list-carousel">
             {TopRatedTvData.map(data => {
-              return <MovieContainer key={data.id} link={``} data={data} />;
+              return (
+                <MovieContainer
+                  key={data.id}
+                  link={`/details/tv/${data.id}`}
+                  data={data}
+                />
+              );
             })}
           </div>
         </section>

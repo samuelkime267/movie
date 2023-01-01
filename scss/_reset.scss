@@ -53,6 +53,45 @@ section {
     color: white;
   }
 }
+.add-to-fav {
+  border-radius: 5px;
+  background-color: var(--transparentWhite);
+  @include displayFlex(center, row);
+  padding: 10px 24px;
+  outline: none;
+  border: none;
+  &:hover {
+    background-color: white;
+    .fav-text {
+      color: crimson;
+    }
+    .fav-btn {
+      color: crimson;
+    }
+  }
+  .fav-text {
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    margin-left: 1rem;
+  }
+  .fav-btn {
+    width: 1.2rem;
+    font-size: 1.2rem;
+    color: white;
+  }
+}
+.genre-btn {
+  border-radius: 2px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 5px 12px;
+  margin: 0.15rem;
+  &:hover {
+    background-color: white;
+    color: var(--darkBlue);
+  }
+}
 /* width */
 ::-webkit-scrollbar {
   width: 12px;
@@ -93,6 +132,16 @@ section {
       font-size: 1rem;
     }
     .play-btn {
+      width: 0.8rem;
+      font-size: 0.8rem;
+    }
+  }
+  .add-to-fav {
+    .fav-text {
+      font-size: 1rem;
+      margin-left: 0.5rem;
+    }
+    .fav-btn {
       width: 0.8rem;
       font-size: 0.8rem;
     }
