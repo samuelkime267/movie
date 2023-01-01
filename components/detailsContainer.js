@@ -12,7 +12,7 @@ const DetailsContainer = ({ data }) => {
     <div
       className="details-container"
       style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`,
+        '--backgroundImage': `url(https://image.tmdb.org/t/p/original${data.backdrop_path})`,
       }}
     >
       <div className="details-fold-holder">
@@ -25,6 +25,8 @@ const DetailsContainer = ({ data }) => {
             sizes="(max-width: 768px) 100vw,
               (max-width: 1024px) 50vw,
               33vw"
+            placeholder="blur"
+            blurDataURL={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
           />
         </div>
         <div className="movie-details-container">

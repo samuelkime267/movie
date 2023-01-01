@@ -12,6 +12,8 @@ const ActorsCard = ({ data }) => {
           className="actor-pic"
           sizes="(max-width: 1024px) 50vw,
               33vw"
+          priority="blur"
+          blurDataURL={`https://image.tmdb.org/t/p/w500${data.profile_path}`}
         />
       </div>
       <p className="actor-name">{data.name ?? data.original_name}</p>

@@ -13,6 +13,8 @@ const CastContainer = ({ castDetail }) => {
           className="actor-pic"
           sizes="(max-width: 1024px) 50vw,
               33vw"
+          placeholder="blur"
+          blurDataURL={`https://image.tmdb.org/t/p/w500${castDetail.profile_path}`}
         />
       </div>
       <div className="cast-details">
