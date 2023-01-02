@@ -12,6 +12,8 @@ import AddToFavBtn from './addToFavBtn.js';
 import CastContainer from './CastContainer.js';
 import DetailsContainer from './detailsContainer.js';
 import Loader from './loader.js';
+import Iframe from './iframe.js';
+
 export {
   Navbar,
   Search,
@@ -27,4 +29,5 @@ export {
   CastContainer,
   DetailsContainer,
   Loader,
+  Iframe,
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/dist/client/image';
-import { PlayBtn } from '/components';
-
+import Link from 'next/link';
 const Hero = ({ data }) => {
   return (
     <div className="hero-container">
@@ -23,7 +22,11 @@ const Hero = ({ data }) => {
             : data.overview}
         </p>
         <p className="release-date">Type: {data.media_type.toUpperCase()}</p>
-        <PlayBtn />
+        <div className="link-btn">
+          <Link href={`/details/${data.media_type}/${data.id}`}>
+            <button className="ctaBtn">See More</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -53,6 +53,20 @@ section {
     color: white;
   }
 }
+.ctaBtn {
+  border-radius: 5px;
+  background-color: var(--primaryBlue);
+  padding: 10px 24px;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  font-size: 1.3rem;
+
+  &:hover {
+    background-color: var(--darkBlue);
+    color: white;
+  }
+}
 .add-to-fav {
   border-radius: 5px;
   background-color: var(--transparentWhite);
@@ -156,5 +170,8 @@ section {
       width: 0.8rem;
       font-size: 0.8rem;
     }
+  }
+  .ctaBtn {
+    font-size: 1rem;
   }
 }

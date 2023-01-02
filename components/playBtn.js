@@ -1,17 +1,16 @@
 import React from 'react';
-import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 
-const PlayBtn = () => {
+const PlayBtn = ({ play }) => {
   return (
     <>
-      <Link href={`/movie`} className="link-btn">
-        <button className="bgLess playButton">
+      <div className="link-btn">
+        <button className="bgLess playButton" onClick={play}>
           <p className="play-text">Play</p>
           <FontAwesomeIcon icon={faPlay} className="play-btn" />
         </button>
-      </Link>
+      </div>
     </>
   );
 };

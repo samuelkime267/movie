@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/dist/client/router';
 
-const DetailsContainer = ({ data }) => {
+const DetailsContainer = ({ data, play }) => {
   const router = useRouter();
   const mediaType = router.asPath.split('/')[2];
   return (
@@ -55,7 +55,7 @@ const DetailsContainer = ({ data }) => {
           </div>
           <p className="overview-p">{data.overview}</p>
           <div className="btn-container">
-            <PlayBtn />
+            <PlayBtn play={play} />
             <AddToFavBtn />
           </div>
         </div>
